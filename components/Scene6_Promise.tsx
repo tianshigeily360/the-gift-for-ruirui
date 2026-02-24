@@ -1,95 +1,100 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Gift, Heart } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Scene6_Promise: React.FC = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-amber-50 flex flex-col items-center justify-center p-8 text-center relative">
-      
-      <div className="max-w-3xl space-y-8 z-10">
-        <motion.div 
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           className="space-y-4"
-        >
-          <h2 className="text-4xl font-serif text-slate-800">现在与承诺</h2>
-          <div className="h-1 w-20 bg-amber-400 mx-auto rounded-full"></div>
-          <p className="text-slate-600 leading-relaxed font-sans max-w-lg mx-auto">
-            从剑网三的虚拟坐标到深圳的霓虹灯火。<br/>
-            算法终于收敛至唯一的解。
-          </p>
-        </motion.div>
-
-        {/* The Box */}
-        <motion.div 
-          className="py-12"
-          whileHover={{ scale: 1.05 }}
-        >
-          <button 
-            onClick={() => setShowModal(true)}
-            className="relative group bg-white p-8 rounded-2xl shadow-2xl border border-amber-100 mx-auto flex flex-col items-center gap-4 transition-all hover:shadow-amber-200/50"
-          >
-            <div className="bg-amber-100 p-6 rounded-full group-hover:bg-amber-200 transition-colors">
-              <Gift size={48} className="text-amber-600" />
-            </div>
-            <span className="font-mono text-amber-900 font-bold tracking-widest">
-              [ 部署未来计划 ]
-            </span>
-          </button>
-        </motion.div>
-
-        <div className="flex justify-center gap-4 opacity-50">
-          <img src="https://picsum.photos/150/150?random=11" className="rounded-lg rotate-3" alt="Memory" />
-          <img src="https://picsum.photos/150/150?random=12" className="rounded-lg -rotate-3" alt="Memory" />
-        </div>
+    <div className="min-h-[100dvh] bg-[#f0eee9] flex flex-col items-center justify-center p-6 relative overflow-hidden perspective-1000">
+      <div className="text-center mb-16 z-10">
+        <h2 className="text-3xl font-serif text-stone-800 mb-4">The Promise</h2>
+        <p className="text-stone-500 font-light text-sm">
+          点击火漆印，解开最后的封印
+        </p>
       </div>
 
-      {/* Modal */}
-      <AnimatePresence>
-        {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-              onClick={() => setShowModal(false)}
-            />
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full relative z-50 text-center border-t-4 border-amber-400"
+      <div className="relative w-full max-w-md h-64 sm:h-72 z-20 flex justify-center items-center">
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div
+              exit={{ opacity: 0, scale: 0.9, rotateX: 20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute w-full h-full bg-white rounded-md shadow-xl border border-stone-100 flex items-center justify-center cursor-pointer group"
+              onClick={() => setIsOpen(true)}
             >
-              <div className="mb-6 flex justify-center">
-                <Heart className="text-red-500 fill-red-500 animate-pulse" size={40} />
-              </div>
-              
-              <h3 className="text-2xl font-serif text-slate-900 mb-2">协议已启动</h3>
-              <p className="text-slate-500 font-mono text-sm mb-6">ID: FOREVER_AND_ALWAYS</p>
-              
-              <div className="bg-amber-50 p-6 rounded-lg border border-amber-100 mb-6">
-                <p className="text-amber-900 font-medium mb-2">目标锁定:</p>
-                <p className="text-lg">"去打开桌上那个金色的盒子。"</p>
-              </div>
-
-              <div className="border-t border-slate-100 pt-4">
-                 <p className="text-xs text-slate-400 font-mono uppercase tracking-widest mb-1">倒计时状态</p>
-                 <p className="text-xl font-bold text-slate-800">2年婚约倒计时: 已启动</p>
-              </div>
-
-              <button 
-                onClick={() => setShowModal(false)}
-                className="mt-8 text-sm text-slate-400 hover:text-slate-600 underline"
+              <svg
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                preserveAspectRatio="none"
               >
-                关闭
-              </button>
+                <path
+                  d="M0,0 L50,50 L100,0"
+                  vectorEffect="non-scaling-stroke"
+                  fill="none"
+                  stroke="#e5e5e5"
+                  strokeWidth="2"
+                  className="w-full h-full"
+                  viewBox="0 0 100 100"
+                />
+              </svg>
+
+              <div className="absolute top-[45%] w-16 h-16 bg-red-700 rounded-full shadow-md flex items-center justify-center transition-transform group-hover:scale-110">
+                <div className="w-14 h-14 rounded-full border border-red-800 flex items-center justify-center bg-red-800/20">
+                  <span className="font-serif text-red-100 text-xl font-bold italic">
+                    R
+                  </span>
+                </div>
+              </div>
             </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 50, rotateX: -20 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="absolute w-full h-[120%] bg-stone-50 rounded-sm shadow-2xl border border-stone-200 p-8 sm:p-10 flex flex-col"
+            >
+              <div className="flex-1">
+                <h3 className="text-xl font-serif text-stone-800 mb-6 border-b border-stone-200 pb-4">
+                  写给未来的信
+                </h3>
+                <p className="text-sm text-stone-600 leading-relaxed font-light mb-4">
+                  从剑网三的虚拟坐标，到现实里真真切切的牵挂。
+                  <br />
+                  <br />
+                  距离或许还能横亘一段时间，但它挡不住两颗已经决定要生活在一起的心。
+                </p>
+                <div className="bg-[#f8f7f5] p-4 rounded border border-stone-200 text-center my-6">
+                  <p className="text-xs text-stone-400 uppercase tracking-widest mb-1">
+                    现在，请看向现实
+                  </p>
+                  <p className="text-base text-stone-800 font-medium">
+                    “去打开桌上那个金色的盒子吧。”
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-auto border-t border-stone-200 pt-4 flex justify-between items-end">
+                <div>
+                  <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">
+                    Time Left
+                  </p>
+                  <p className="text-lg font-serif text-amber-600">
+                    2年婚约 · 倒计时中
+                  </p>
+                </div>
+                <div className="w-10 h-10 border border-red-700/30 rounded-full flex items-center justify-center opacity-50">
+                  <span className="font-serif text-red-700 text-xs italic">
+                    Sealed
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
