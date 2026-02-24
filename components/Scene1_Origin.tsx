@@ -87,16 +87,13 @@ const Scene1_Origin: React.FC = () => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative h-[150vh] bg-stone-100 overflow-hidden"
-    >
+    <div ref={containerRef} className="relative bg-stone-100 overflow-hidden">
       <div className="sticky top-0 h-screen-safe w-full flex items-center justify-center overflow-hidden">
         {/* Background Image (Ink/Mountain) */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30 pointer-events-none grayscale"
           style={{
-            backgroundImage: "url(/images/llf_origin.jpg)",
+            backgroundImage: "url(/images/llf_origin.jpeg)",
           }}
         />
 

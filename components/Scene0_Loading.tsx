@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   onComplete: () => void;
@@ -17,14 +17,14 @@ const Scene0_Loading: React.FC<Props> = ({ onComplete }) => {
       "检索飞行记录...",
       "同步心跳频率...",
       "编译未来...",
-      "系统准备就绪。"
+      "系统准备就绪。",
     ];
 
     let currentLog = 0;
-    
+
     // Simulate Progress
     const progressInterval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           setIsReady(true);
@@ -37,7 +37,7 @@ const Scene0_Loading: React.FC<Props> = ({ onComplete }) => {
     // Simulate Logs
     const logInterval = setInterval(() => {
       if (currentLog < systemLogs.length) {
-        setLogs(prev => [...prev, systemLogs[currentLog]]);
+        setLogs((prev) => [...prev, systemLogs[currentLog]]);
         currentLog++;
       } else {
         clearInterval(logInterval);
@@ -55,37 +55,62 @@ const Scene0_Loading: React.FC<Props> = ({ onComplete }) => {
       <div className="max-w-md w-full z-10">
         <div className="mb-8 h-40 overflow-hidden relative">
           {logs.map((log, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               className="text-sm opacity-80"
             >
-              <span className="mr-2 text-green-700">[{new Date().toLocaleTimeString()}]</span>
+              <span className="mr-2 text-green-700">
+                [{new Date().toLocaleTimeString()}]
+              </span>
               {log}
             </motion.div>
           ))}
           <div className="animate-pulse">_</div>
         </div>
 
-        <div className="w-full text-center mb-2">正在加载回忆... {Math.min(progress, 100)}%</div>
+        <div className="w-full text-center mb-2">
+          正在加载回忆... {Math.min(progress, 100)}%
+        </div>
         <div className="w-full h-2 bg-green-900 rounded border border-green-700">
-          <motion.div 
+          <motion.div
             className="h-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.7)]"
             style={{ width: `${Math.min(progress, 100)}%` }}
           />
         </div>
 
         {isReady && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.05 }}
-            onClick={onComplete}
-            className="mt-12 w-full py-4 border-2 border-green-500 text-green-500 font-bold tracking-widest hover:bg-green-500 hover:text-black transition-colors uppercase"
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-12 flex flex-col items-center w-full"
           >
-            [ 进入世界 ]
-          </motion.button>
+            {/* 增加声音强提示 */}
+            <div className="text-green-400/80 text-xs mb-4 flex items-center gap-2 animate-pulse">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+              <span>请开启声音或佩戴耳机，以获取完整体验</span>
+            </div>
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              onClick={onComplete}
+              className="mt-12 w-full py-4 border-2 border-green-500 text-green-500 font-bold tracking-widest hover:bg-green-500 hover:text-black transition-colors uppercase"
+            >
+              [ 进入世界 ]
+            </motion.button>
+          </motion.div>
         )}
       </div>
 
