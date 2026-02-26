@@ -210,7 +210,7 @@ const App: React.FC = () => {
           </main>
 
           <footer className="w-full py-12 bg-slate-50 text-center text-slate-400 text-[10px] font-mono pb-safe">
-            <p>Project Infinity v1.0.0 • 2026.03.14</p>
+            <p>Project Infinity v1.0.0 • 2026.03.24</p>
           </footer>
         </>
       )}

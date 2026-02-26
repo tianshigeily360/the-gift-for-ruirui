@@ -71,7 +71,7 @@ const Scene6_Promise: React.FC = () => {
                     现在，请看向现实
                   </p>
                   <p className="text-base text-stone-800 font-medium">
-                    “去打开桌上那个金色的盒子吧。”
+                    “去打开桌上那个盒子吧。”
                   </p>
                 </div>
               </div>
@@ -82,7 +82,7 @@ const Scene6_Promise: React.FC = () => {
                     Time Left
                   </p>
                   <p className="text-lg font-serif text-amber-600">
-                    2年婚约 · 倒计时中
+                    婚约 · 倒计时中
                   </p>
                 </div>
                 <div className="w-10 h-10 border border-red-700/30 rounded-full flex items-center justify-center opacity-50">
