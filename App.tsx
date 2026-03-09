@@ -209,8 +209,36 @@ const App: React.FC = () => {
             </div>
           </main>
 
-          <footer className="w-full py-12 bg-slate-50 text-center text-slate-400 text-[10px] font-mono pb-safe">
+          <footer className="w-full py-12 bg-slate-50 flex flex-col items-center justify-center gap-3 text-slate-400 text-[10px] font-mono pb-safe">
             <p>Project Infinity v1.0.0 • 2026.03.24</p>
+
+            {/* 备案信息区 */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 mt-2 tracking-widest">
+              {/* 1. 工信部 ICP 备案（如果你同时申请了，请修改此项，否则可注释掉） */}
+              <a
+                href="https://beian.miit.gov.cn/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-500 transition-colors"
+              >
+                粤ICP备2026020472号
+              </a>
+
+              {/* 2. 公安网安备 */}
+              {/* <a
+                href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=XXXXXXXXXXXXXX"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 hover:text-slate-500 transition-colors"
+              >
+                <img
+                  src="https://beian.mps.gov.cn/web/assets/logo01.6189a29f.png"
+                  alt="公安备案图标"
+                  className="w-[14px] h-[14px]"
+                />
+                <span>粤公网安备 XXXXXXXXXXXXXX号</span>
+              </a> */}
+            </div>
           </footer>
         </>
       )}
