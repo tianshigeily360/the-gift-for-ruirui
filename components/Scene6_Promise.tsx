@@ -76,7 +76,7 @@ const Scene6_Promise: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-auto border-t border-stone-200 pt-4 flex justify-between items-end">
+              {/* <div className="mt-auto border-t border-stone-200 pt-4 flex justify-between items-end">
                 <div>
                   <p className="text-[10px] text-stone-400 uppercase tracking-widest mb-1">
                     Time Left
@@ -90,7 +90,7 @@ const Scene6_Promise: React.FC = () => {
                     Sealed
                   </span>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           )}
         </AnimatePresence>
